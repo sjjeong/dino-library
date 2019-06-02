@@ -2,12 +2,10 @@ package com.dino.library.ext
 
 import com.google.gson.Gson
 
+val gson = Gson()
 
-inline fun <reified T> Gson.fromJson(jsonString: String?, default: T? = null): T? {
-    if (jsonString == null) {
-        return default
-    }
-    return fromJson(jsonString, T::class.java)
-}
+inline fun <reified T> String.fromJson() =
+    gson.fromJson(this, T::class.java)
 
-fun Any.toJsonString() = Gson().toJson(this)
+fun Any.toJson() =
+    gson.toJson(this)

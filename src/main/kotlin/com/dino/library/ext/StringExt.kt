@@ -37,5 +37,3 @@ fun String.needUpdate(): Boolean {
         }
     }
 }
-
-inline fun <reified T> String.fromJson() = Gson().fromJson<T>(this)
