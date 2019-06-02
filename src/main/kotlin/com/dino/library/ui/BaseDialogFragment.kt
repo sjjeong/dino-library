@@ -15,7 +15,8 @@ import androidx.fragment.app.FragmentManager
 abstract class BaseDialogFragment<B : ViewDataBinding>(private val layoutId: Int) :
     DialogFragment() {
 
-    lateinit var binding: B
+    protected lateinit var binding: B
+        private set
 
     override fun onCreateView(
         inflater: LayoutInflater,

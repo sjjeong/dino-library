@@ -1,7 +1,6 @@
 package com.dino.library.ui
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,13 +29,8 @@ abstract class BaseFragment<B : ViewDataBinding>(private val layoutId: Int) : Fr
         super.onDestroyView()
     }
 
-    fun showKeyboard() {
-        Handler().postDelayed({
-            (activity as? BaseActivity<*>)?.showKeyboard()
-        }, 50)
+    protected fun binding(action: B.() -> Unit) {
+        binding.run(action)
     }
 
-    fun hideKeyboard() {
-        (activity as? BaseActivity<*>)?.hideKeyboard()
-    }
 }

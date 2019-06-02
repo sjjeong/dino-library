@@ -1,6 +1,5 @@
 package com.dino.library.ext
 
-import com.google.gson.Gson
 import com.googry.dinolibrary.BuildConfig
 
 fun String.extractNumber(): String {

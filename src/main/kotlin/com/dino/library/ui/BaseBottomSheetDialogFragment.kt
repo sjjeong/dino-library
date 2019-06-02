@@ -12,7 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 abstract class BaseBottomSheetDialogFragment<B : ViewDataBinding>(private val layoutId: Int) :
     BottomSheetDialogFragment() {
 
-    lateinit var binding: B
+    protected lateinit var binding: B
+        private set
 
     var onClickListener: ((position: Int, text: String) -> Unit)? = null
 
@@ -35,6 +36,10 @@ abstract class BaseBottomSheetDialogFragment<B : ViewDataBinding>(private val la
 
     fun onCloseClick() {
         dismiss()
+    }
+
+    protected fun binding(action: B.() -> Unit) {
+        binding.run(action)
     }
 
 }

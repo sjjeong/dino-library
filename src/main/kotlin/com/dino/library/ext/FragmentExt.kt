@@ -1,6 +1,7 @@
 package com.dino.library.ext
 
 import androidx.fragment.app.Fragment
+import com.dino.library.ui.BaseActivity
 
 fun Fragment.replaceFragmentInFragment(fragment: Fragment, frameId: Int) {
     childFragmentManager.transact {
@@ -12,4 +13,12 @@ fun Fragment.addFragmentInFragment(fragment: Fragment, frameId: Int) {
     childFragmentManager.transact {
         add(frameId, fragment)
     }
+}
+
+fun Fragment.showKeyboard() {
+    (activity as? BaseActivity<*>)?.showKeyboard()
+}
+
+fun Fragment.hideKeyboard() {
+    (activity as? BaseActivity<*>)?.hideKeyboard()
 }
