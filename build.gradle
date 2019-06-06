@@ -1,5 +1,5 @@
 buildscript {
-    apply from: 'version.gradle'
+    apply from: 'versions.gradle'
     repositories {
         google()
         jcenter()
