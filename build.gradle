@@ -68,8 +68,6 @@ dependencies {
     api deps.library.okhttp_logging_interceptor
     api deps.library.retrofit2
     api deps.library.converter_gson
-    api deps.library.adapter_rxjava2
-    api deps.library.adapter_coroutine
 
     api deps.library.koin_android
 

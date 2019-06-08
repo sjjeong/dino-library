@@ -26,8 +26,7 @@ ext {
 
             okhttp             : '3.14.1',
             retrofit2          : [
-                    retrofit2        : '2.5.0',
-                    adapter_coroutine: '1.0.0',
+                    retrofit2: '2.6.0',
             ],
 
             koin               : "2.0.0",
@@ -65,8 +64,6 @@ ext {
 
                     retrofit2                 : "com.squareup.retrofit2:retrofit:$versions.retrofit2.retrofit2",
                     converter_gson            : "com.squareup.retrofit2:converter-gson:$versions.retrofit2.retrofit2",
-                    adapter_rxjava2           : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit2.retrofit2",
-                    adapter_coroutine         : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$versions.retrofit2.adapter_coroutine",
 
                     koin_android              : "org.koin:koin-androidx-viewmodel:$versions.koin",
 
