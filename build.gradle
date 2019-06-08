@@ -59,6 +59,8 @@ dependencies {
     api deps.androidx.lifecycle_extensions
     api deps.androidx.lifecycle_viewmodel_ktx
     api deps.androidx.core_ktx
+    api deps.androidx.viewmodel_ktx
+    api deps.androidx.livedata_ktx
 
     api deps.library.rxjava
     api deps.library.rxandroid

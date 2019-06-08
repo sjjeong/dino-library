@@ -16,6 +16,7 @@ ext {
                     constraint_layout   : '2.0.0-beta1',
                     lifecycle_extensions: '2.2.0-alpha01',
                     core_ktx            : '1.2.0-alpha01',
+                    lifecycle_ktx       : '2.2.0-alpha01',
             ],
 
             rx                 : [
@@ -53,6 +54,8 @@ ext {
                     lifecycle_extensions   : "androidx.lifecycle:lifecycle-extensions:$versions.androidx.lifecycle_extensions",
                     lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_extensions",
                     core_ktx               : "androidx.core:core-ktx:$versions.androidx.core_ktx",
+                    viewmodel_ktx          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_ktx",
+                    livedata_ktx           : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_ktx",
             ],
             library : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",
