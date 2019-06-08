@@ -3,7 +3,6 @@ package com.dino.library.ext
 import android.view.View
 import androidx.databinding.BindingAdapter
 import com.jakewharton.rxbinding2.view.RxView
-import org.jetbrains.anko.backgroundResource
 import java.util.concurrent.TimeUnit
 
 @BindingAdapter(value = ["selected"])
@@ -26,8 +25,8 @@ fun View.setOnBlockClick(listener: View.OnClickListener) {
 }
 
 @BindingAdapter(value = ["backgroundResId"])
-fun View.setOnBackgroundResId(resId: Int) {
-    backgroundResource = resId
+fun View.setBackgroundResId(resId: Int) {
+    setBackgroundResource(resId)
 }
 
 

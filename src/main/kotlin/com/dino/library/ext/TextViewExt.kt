@@ -3,9 +3,9 @@ package com.dino.library.ext
 import android.os.Build
 import android.text.Html
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.dino.library.util.TextViewIntAnimation
-import org.jetbrains.anko.textColorResource
 
 @BindingAdapter(value = ["animInt"])
 fun TextView.setAnimInt(value: Int) {
@@ -23,5 +23,5 @@ fun TextView.setHtmlText(htmlText: String) {
 
 @BindingAdapter(value = ["textColorResId"])
 fun TextView.setTextColorResId(resId: Int) {
-    textColorResource = resId
+    setTextColor(ContextCompat.getColor(context, resId))
 }
