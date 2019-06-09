@@ -18,6 +18,7 @@ ext {
                     core_ktx            : '1.2.0-alpha01',
                     lifecycle_ktx       : '2.2.0-alpha01',
                     navigation          : '2.1.0-alpha05',
+                    navigation_ktx      : '1.0.0',
             ],
 
             rx                 : [
@@ -61,6 +62,10 @@ ext {
                     livedata_ktx           : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_ktx",
                     navigation_fragment    : "androidx.navigation:navigation-fragment:$versions.androidx.navigation",
                     navigation_ui          : "androidx.navigation:navigation-ui:$versions.androidx.navigation",
+                    navigation_common_ktx  : "android.arch.navigation:navigation-common-ktx:$versions.androidx.navigation_ktx",
+                    navigation_fragment_ktx: "android.arch.navigation:navigation-fragment-ktx:$versions.androidx.navigation_ktx",
+                    navigation_runtime_ktx : "android.arch.navigation:navigation-runtime-ktx:$versions.androidx.navigation_ktx",
+                    navigation_ui_ktx      : "android.arch.navigation:navigation-ui-ktx:$versions.androidx.navigation_ktx",
             ],
             library  : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",

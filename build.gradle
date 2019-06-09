@@ -16,6 +16,7 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion versions.compile_sdk_version
@@ -61,6 +62,12 @@ dependencies {
     api deps.androidx.core_ktx
     api deps.androidx.viewmodel_ktx
     api deps.androidx.livedata_ktx
+    api deps.androidx.navigation_fragment
+    api deps.androidx.navigation_ui
+    api deps.androidx.navigation_common_ktx
+    api deps.androidx.navigation_fragment_ktx
+    api deps.androidx.navigation_runtime_ktx
+    api deps.androidx.navigation_ui_ktx
 
     api deps.library.rxjava
     api deps.library.rxandroid
