@@ -17,6 +17,7 @@ ext {
                     lifecycle_extensions: '2.2.0-alpha01',
                     core_ktx            : '1.2.0-alpha01',
                     lifecycle_ktx       : '2.2.0-alpha01',
+                    navigation          : '2.1.0-alpha05',
             ],
 
             rx                 : [
@@ -40,15 +41,17 @@ ext {
     ]
 
     deps = [
-            gradle  : "com.android.tools.build:gradle:$versions.gradle",
-
-            kotlin  : [
-                    plugin            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin.sdk",
+            classpath: [
+                    gradle              : "com.android.tools.build:gradle:$versions.gradle",
+                    kotlin              : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin.sdk",
+                    navigation_safe_args: "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidx.navigation",
+            ],
+            kotlin   : [
                     sdk               : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin.sdk",
                     coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin.coroutine",
                     coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin.coroutine",
             ],
-            androidx: [
+            androidx : [
                     material               : "com.google.android.material:material:$versions.androidx.material",
                     constraint_layout      : "androidx.constraintlayout:constraintlayout:$versions.androidx.constraint_layout",
                     lifecycle_extensions   : "androidx.lifecycle:lifecycle-extensions:$versions.androidx.lifecycle_extensions",
@@ -56,8 +59,10 @@ ext {
                     core_ktx               : "androidx.core:core-ktx:$versions.androidx.core_ktx",
                     viewmodel_ktx          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_ktx",
                     livedata_ktx           : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_ktx",
+                    navigation_fragment    : "androidx.navigation:navigation-fragment:$versions.androidx.navigation",
+                    navigation_ui          : "androidx.navigation:navigation-ui:$versions.androidx.navigation",
             ],
-            library : [
+            library  : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",
                     rxandroid                 : "io.reactivex.rxjava2:rxandroid:$versions.rx.rxandroid",
                     rxkotlin                  : "io.reactivex.rxjava2:rxkotlin:$versions.rx.rxkotlin",
@@ -77,7 +82,7 @@ ext {
                     jsoup                     : "org.jsoup:jsoup:$versions.jsoup",
                     lottie                    : "com.airbnb.android:lottie:$versions.lottie",
             ],
-            kapt    : [
+            kapt     : [
                     glide_compiler: "com.github.bumptech.glide:compiler:$versions.glide",
             ],
     ]
