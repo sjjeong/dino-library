@@ -15,6 +15,11 @@ fun View.setEnabled(enabled: Boolean) {
     isEnabled = enabled
 }
 
+@BindingAdapter(value = ["visible"])
+fun View.setVisible(visible: Boolean) {
+    visibility = if (visible) View.VISIBLE else View.GONE
+}
+
 @BindingAdapter(value = ["onBlockClick"])
 fun View.setOnBlockClick(listener: View.OnClickListener) {
     RxView.clicks(this)
