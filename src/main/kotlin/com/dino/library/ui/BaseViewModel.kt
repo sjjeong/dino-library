@@ -1,14 +1,13 @@
 package com.dino.library.ui
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewModel :
     ViewModel() {
-    protected val compositeDisposable = CompositeDisposable()
 
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
+    protected val _liveLoading = MutableLiveData<Boolean>(false)
+    val liveLoading: LiveData<Boolean> get() = _liveLoading
+
 }
