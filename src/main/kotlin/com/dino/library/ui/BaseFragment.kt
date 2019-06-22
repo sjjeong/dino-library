@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment<B : ViewDataBinding>(private val layoutId: Int) : Fragment() {
 
     protected lateinit var binding: B
-    protected val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,11 +20,6 @@ abstract class BaseFragment<B : ViewDataBinding>(private val layoutId: Int) : Fr
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.lifecycleOwner = this
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        compositeDisposable.clear()
-        super.onDestroyView()
     }
 
     protected fun binding(action: B.() -> Unit) {
