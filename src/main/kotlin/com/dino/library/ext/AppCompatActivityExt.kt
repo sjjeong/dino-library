@@ -16,8 +16,12 @@ fun AppCompatActivity.addFragmentInActivity(fragment: Fragment, frameId: Int) {
     }
 }
 
-fun AppCompatActivity.showToast(msg: String, isLong: Boolean = false) {
-    Toast.makeText(applicationContext, msg, if (isLong) Toast.LENGTH_LONG else Toast.LENGTH_SHORT)
+fun AppCompatActivity.showToast(msg: CharSequence, isLong: Boolean = false) {
+    Toast.makeText(
+        applicationContext,
+        msg,
+        if (isLong) Toast.LENGTH_LONG else Toast.LENGTH_SHORT
+    )
         .show()
 }
 

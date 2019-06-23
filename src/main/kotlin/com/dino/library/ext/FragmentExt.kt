@@ -22,3 +22,7 @@ fun Fragment.showKeyboard() {
 fun Fragment.hideKeyboard() {
     (activity as? BaseActivity<*>)?.hideKeyboard()
 }
+
+fun Fragment.showToast(msg: CharSequence, isLong: Boolean = false) {
+    (activity as? BaseActivity<*>)?.showToast(msg, isLong)
+}
