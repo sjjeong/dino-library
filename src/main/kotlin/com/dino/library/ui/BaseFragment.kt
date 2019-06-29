@@ -19,7 +19,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
     protected lateinit var binding: B
         private set
 
-    abstract val viewModel: VM
+    abstract val viewModel: Lazy<VM>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,9 +34,9 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
         super.onViewCreated(view, savedInstanceState)
         binding {
             binding.lifecycleOwner = this@BaseFragment
-            binding.setVariable(BR.vm, viewModel)
+            binding.setVariable(BR.vm, viewModel.value)
         }
-        viewModel.run {
+        viewModel.value.run {
             liveToast.observe(this@BaseFragment) {
                 it.get { text ->
                     showToast(text)
