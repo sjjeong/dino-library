@@ -7,5 +7,5 @@ val gson = Gson()
 inline fun <reified T> String.fromJson() =
     gson.fromJson(this, T::class.java)
 
-fun Any.toJson() =
+fun <T> T.toJson() =
     gson.toJson(this)
