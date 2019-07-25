@@ -26,5 +26,5 @@ fun AppCompatActivity.showToast(msg: CharSequence, isLong: Boolean = false) {
 }
 
 fun AppCompatActivity.showToast(msgId: Int, isLong: Boolean = false) {
-    showToast(getString(msgId, isLong))
+    showToast(getString(msgId), isLong)
 }
