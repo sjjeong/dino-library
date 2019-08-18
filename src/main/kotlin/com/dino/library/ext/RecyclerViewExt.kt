@@ -11,8 +11,5 @@ fun RecyclerView.replaceAll(list: List<Any>?) {
         replaceAll(list)
         notifyDataSetChanged()
     }
-    (this.adapter as? SimpleRecyclerView.ListAdapter<Any, *>)?.run {
-        replaceAll(list)
-        notifyDataSetChanged()
-    }
+    (this.adapter as? SimpleRecyclerView.ListAdapter<Any, *>)?.submitList(list)
 }
