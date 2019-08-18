@@ -39,12 +39,13 @@ abstract class SimpleRecyclerView {
         protected val items = mutableListOf<ITEM>()
 
         fun replaceAll(items: List<ITEM>?) {
-            items?.let {
-                this.items.run {
-                    clear()
+            this.items.run {
+                clear()
+                items?.let {
                     addAll(it)
                 }
             }
+            notifyDataSetChanged()
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
