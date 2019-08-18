@@ -11,6 +11,12 @@ ext {
                     coroutine: '1.2.1',
             ],
 
+            test               : [
+                    junit        : '4.12',
+                    runner       : '1.1.1',
+                    espresso_core: '3.1.1',
+            ],
+
             androidx           : [
                     material            : '1.1.0-alpha07',
                     constraint_layout   : '2.0.0-beta1',
@@ -49,6 +55,11 @@ ext {
                     sdk               : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin.sdk",
                     coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin.coroutine",
                     coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin.coroutine",
+            ],
+            test     : [
+                    junit        : "junit:junit:$versions.test.junit",
+                    runner       : "androidx.test:runner:$versions.test.runner",
+                    espresso_core: "androidx.test.espresso:espresso-core:$versions.test.espresso_core",
             ],
             androidx : [
                     material               : "com.google.android.material:material:$versions.androidx.material",

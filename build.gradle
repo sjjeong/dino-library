@@ -84,6 +84,10 @@ dependencies {
     api deps.library.lottie
 
     kapt deps.kapt.glide_compiler
+
+    testApi deps.test.junit
+    androidTestApi deps.test.runner
+    androidTestApi deps.test.espresso_core
 }
 repositories {
     mavenCentral()
