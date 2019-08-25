@@ -1,41 +1,23 @@
 package com.dino.library.data
 
-class DataResource<out T> private constructor(
-    val status: Status,
-    val data: T?,
-    val throwable: Throwable?
-) {
+sealed class DataResource<out T> {
+    data class Success<T>(val data: T) : DataResource<T>()
+    data class Error(val exception: Exception) : DataResource<Nothing>()
+    object Loading : DataResource<Nothing>()
 
-    enum class Status {
-        SUCCESS,
-        ERROR,
-        LOADING
+    override fun toString(): String {
+        return when (this) {
+            is Success<*> -> "Success[data=$data]"
+            is Error -> "Error[exception=$exception]"
+            Loading -> "Loading"
+        }
     }
 
     companion object {
+        fun <T> success(data: T) = Success(data)
 
-        fun <T> success(data: T): DataResource<T> {
-            return DataResource(
-                Status.SUCCESS,
-                data,
-                null
-            )
-        }
+        fun error(exception: Exception) = Error(exception)
 
-        fun <T> error(throwable: Throwable, data: T? = null): DataResource<T> {
-            return DataResource(
-                Status.ERROR,
-                data,
-                throwable
-            )
-        }
-
-        fun <T> loading(data: T? = null): DataResource<T> {
-            return DataResource(
-                Status.LOADING,
-                data,
-                null
-            )
-        }
+        fun loading() = Loading
     }
 }
