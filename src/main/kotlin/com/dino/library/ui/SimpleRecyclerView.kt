@@ -1,44 +1,36 @@
 package com.dino.library.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.googry.dinolibrary.BR
+import com.googry.dinolibrary.BuildConfig
 
 abstract class SimpleRecyclerView {
 
-    abstract class ListAdapter<ITEM : Any, B : ViewDataBinding>(
-        @LayoutRes private val layoutRes: Int = -1,
-        private val bindingVariableId: Int? = null,
-        diffCallback: DiffUtil.ItemCallback<ITEM>
-    ) : androidx.recyclerview.widget.ListAdapter<ITEM, ViewHolder<B>>(
-        diffCallback
-    ) {
+    class ListAdapter(
+        @LayoutRes private val layoutRes: Int,
+        diffCallback: DiffUtil.ItemCallback<Any>
+    ) : androidx.recyclerview.widget.ListAdapter<Any, ViewHolder>(diffCallback) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            object : ViewHolder<B>(
-                layoutRes = layoutRes,
-                parent = parent,
-                bindingVariableId = bindingVariableId
-            ) {}
+            ViewHolder(layoutRes = layoutRes, parent = parent)
 
-        override fun onBindViewHolder(holder: ViewHolder<B>, position: Int) {
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) =
             holder.onBindViewHolder(getItem(position))
-        }
     }
 
-    abstract class Adapter<ITEM : Any, B : ViewDataBinding>(
-        @LayoutRes private val layoutRes: Int = -1,
-        private val bindingVariableId: Int? = null
-    ) : RecyclerView.Adapter<ViewHolder<B>>() {
+    open class Adapter(
+        @LayoutRes private val layoutRes: Int
+    ) : RecyclerView.Adapter<ViewHolder>() {
 
-        protected val items = mutableListOf<ITEM>()
+        protected open val items = mutableListOf<Any>()
 
-        fun replaceAll(items: List<ITEM>?) {
+        open fun replaceAll(items: List<Any>?) {
             this.items.run {
                 clear()
                 items?.let {
@@ -49,42 +41,36 @@ abstract class SimpleRecyclerView {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            object : ViewHolder<B>(
-                layoutRes = layoutRes,
-                parent = parent,
-                bindingVariableId = bindingVariableId
-            ) {}
+            ViewHolder(layoutRes = layoutRes, parent = parent)
 
-        override fun getItemCount(): Int = items.size
+        override fun getItemCount() =
+            items.size
 
-        override fun onBindViewHolder(holder: ViewHolder<B>, position: Int) {
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) =
             holder.onBindViewHolder(items[position])
-        }
+
     }
 
-    abstract class ViewHolder<out B : ViewDataBinding>(
+    open class ViewHolder(
         @LayoutRes layoutRes: Int,
-        parent: ViewGroup?,
-        private val bindingVariableId: Int?
+        parent: ViewGroup?
     ) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent?.context)
             .inflate(layoutRes, parent, false)
     ) {
 
-        val binding: B = DataBindingUtil.bind(itemView)!!
+        protected val binding: ViewDataBinding = DataBindingUtil.bind(itemView)!!
 
-        fun onBindViewHolder(item: Any?) {
+        open fun onBindViewHolder(item: Any?) {
             try {
                 binding.run {
-                    bindingVariableId?.let {
-                        setVariable(it, item)
-                    }
+                    setVariable(BR.item, item)
                     executePendingBindings()
                 }
-                itemView.visibility = View.VISIBLE
             } catch (e: Exception) {
-                e.printStackTrace()
-                itemView.visibility = View.GONE
+                if (BuildConfig.DEBUG) {
+                    e.printStackTrace()
+                }
             }
         }
     }
