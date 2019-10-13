@@ -3,15 +3,26 @@ package com.dino.library.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dino.library.util.Event
+import com.dino.library.util.EventLiveData
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected val _liveLoading = MutableLiveData(false)
+    private val _liveLoading = MutableLiveData(false)
     val liveLoading: LiveData<Boolean> get() = _liveLoading
 
-    protected val _liveToast = MutableLiveData<Event<CharSequence>>()
-    val liveToast: LiveData<Event<CharSequence>> get() = _liveToast
+    val liveToast = EventLiveData<CharSequence>()
+
+    fun showLoading() {
+        _liveLoading.value = true
+    }
+
+    fun hideLoading() {
+        _liveLoading.value = false
+    }
+
+    fun showToast(message: CharSequence) {
+        liveToast.setEventValue(message)
+    }
 
 
 }

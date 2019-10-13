@@ -8,8 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
-import com.dino.library.ext.showToast
 import com.googry.dinolibrary.BR
 
 abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
@@ -37,10 +35,8 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
             binding.setVariable(BR.vm, viewModel)
         }
         viewModel.run {
-            liveToast.observe(this@BaseFragment) {
-                it.get { text ->
-                    showToast(text)
-                }
+            liveToast.observe(viewLifecycleOwner) {
+                showToast(it)
             }
         }
     }
