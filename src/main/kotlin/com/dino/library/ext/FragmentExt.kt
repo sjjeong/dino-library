@@ -16,17 +16,17 @@ fun Fragment.addFragmentInFragment(fragment: Fragment, frameId: Int) {
 }
 
 fun Fragment.showKeyboard() {
-    (activity as? BaseActivity<*>)?.showKeyboard()
+    (activity as? BaseActivity<*, *>)?.showKeyboard()
 }
 
 fun Fragment.hideKeyboard() {
-    (activity as? BaseActivity<*>)?.hideKeyboard()
+    (activity as? BaseActivity<*, *>)?.hideKeyboard()
 }
 
 fun Fragment.showToast(msg: CharSequence, isLong: Boolean = false) {
-    (activity as? BaseActivity<*>)?.showToast(msg, isLong)
+    (activity as? BaseActivity<*, *>)?.showToast(msg, isLong)
 }
 
 fun Fragment.showToast(msgId: Int, isLong: Boolean = false) {
-    (activity as? BaseActivity<*>)?.showToast(msgId, isLong)
+    (activity as? BaseActivity<*, *>)?.showToast(msgId, isLong)
 }
