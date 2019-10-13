@@ -8,7 +8,7 @@ import com.dino.library.ext.showToast
 import com.googry.dinolibrary.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
+abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(
     layoutResId: Int,
     viewModelCls: Class<VM>
 ) : Fragment(layoutResId) {
@@ -24,7 +24,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
             setVariable(BR.vm, viewModel)
         }
         viewModel {
-            liveToast.observe(viewLifecycleOwner) { this@BaseFragment.showToast(it) }
+            liveToast.observe(viewLifecycleOwner) { this@DinoFragment.showToast(it) }
         }
     }
 

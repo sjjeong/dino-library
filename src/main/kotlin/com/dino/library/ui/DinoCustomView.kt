@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 
-abstract class BaseCustomView<B : ViewDataBinding>(
+abstract class DinoCustomView<B : ViewDataBinding>(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -37,7 +37,7 @@ abstract class BaseCustomView<B : ViewDataBinding>(
 
     private fun initView() {
         binding = DataBindingUtil.bind(LayoutInflater.from(context)
-            .inflate(getLayoutId(), this@BaseCustomView, false).apply {
+            .inflate(getLayoutId(), this@DinoCustomView, false).apply {
                 addView(this)
             })!!
     }

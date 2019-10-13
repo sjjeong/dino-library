@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 
 
-abstract class BaseDialogFragment<B : ViewDataBinding>(private val layoutId: Int) :
+abstract class DinoDialogFragment<B : ViewDataBinding>(private val layoutId: Int) :
     DialogFragment() {
 
     protected lateinit var binding: B

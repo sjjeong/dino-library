@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dino.library.util.EventLiveData
 
-abstract class BaseViewModel : ViewModel() {
+abstract class DinoViewModel : ViewModel() {
 
     private val _liveLoading = MutableLiveData(false)
     val liveLoading: LiveData<Boolean> get() = _liveLoading

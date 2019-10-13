@@ -10,7 +10,7 @@ import com.googry.dinolibrary.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
+abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(
     layoutResId: Int,
     viewModelCls: Class<VM>
 ) : AppCompatActivity(layoutResId) {
@@ -27,11 +27,11 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding {
-            lifecycleOwner = this@BaseActivity
+            lifecycleOwner = this@DinoActivity
             setVariable(BR.vm, viewModel)
         }
         viewModel {
-            liveToast.observe(this@BaseActivity) { this@BaseActivity.showToast(it) }
+            liveToast.observe(this@DinoActivity) { this@DinoActivity.showToast(it) }
         }
     }
 
