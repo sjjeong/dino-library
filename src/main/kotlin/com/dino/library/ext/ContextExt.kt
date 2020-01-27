@@ -8,7 +8,6 @@ import android.view.inputmethod.InputMethodManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.browse
 
 fun Context.callPhone(phoneNumber: String) {
     val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
@@ -16,7 +15,8 @@ fun Context.callPhone(phoneNumber: String) {
 }
 
 fun Context.showPlayStore() {
-    browse("market://details?id=$packageName")
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+    startActivity(intent)
 }
 
 fun Context.showKeyboard() {
