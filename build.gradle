@@ -74,14 +74,15 @@ dependencies {
     api deps.library.retrofit2
     api deps.library.converter_gson
 
-    api deps.library.koin_android
+    api deps.library.koin_androidx_viewmodel
 
     api deps.library.gson
-    api deps.library.anko_common
     api deps.library.rxbinding_kotlin
     api deps.library.glide
     api deps.library.jsoup
     api deps.library.lottie
+
+    api deps.dino.simplerecyclerview
 
     kapt deps.kapt.glide_compiler
 
