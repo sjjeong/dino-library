@@ -50,7 +50,6 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compile_sdk_version
-    buildToolsVersion versions.build_tool_version
     defaultConfig {
         applicationId $application_id$
         minSdkVersion versions.min_sdk_version
@@ -65,10 +64,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    
+    // Keep the following configuration in order to target Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     dataBinding {
