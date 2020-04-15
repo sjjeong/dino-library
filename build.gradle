@@ -70,10 +70,6 @@ dependencies {
     api deps.androidx.lifecycle_viewmodel_ktx
     api deps.androidx.lifecycle_livedata_ktx
     api deps.androidx.core_ktx
-    api deps.androidx.navigation_common_ktx
-    api deps.androidx.navigation_fragment_ktx
-    api deps.androidx.navigation_runtime_ktx
-    api deps.androidx.navigation_ui_ktx
 
     api deps.library.rxjava
     api deps.library.rxandroid

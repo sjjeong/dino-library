@@ -23,7 +23,6 @@ ext {
                     constraint_layout   : '2.0.0-beta4',
                     lifecycle_extensions: '2.2.0',
                     core_ktx            : '1.2.0-rc01',
-                    navigation          : '2.2.0',
             ],
 
             rx                 : [
@@ -70,10 +69,6 @@ ext {
                     lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_extensions",
                     lifecycle_livedata_ktx : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_extensions",
                     core_ktx               : "androidx.core:core-ktx:$versions.androidx.core_ktx",
-                    navigation_common_ktx  : "androidx.navigation:navigation-common-ktx:$versions.androidx.navigation",
-                    navigation_fragment_ktx: "androidx.navigation:navigation-fragment-ktx:$versions.androidx.navigation",
-                    navigation_runtime_ktx : "androidx.navigation:navigation-runtime-ktx:$versions.androidx.navigation",
-                    navigation_ui_ktx      : "androidx.navigation:navigation-ui-ktx:$versions.androidx.navigation",
             ],
             library  : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",
