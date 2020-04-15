@@ -1,6 +1,9 @@
 package com.dino.library.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -13,9 +16,20 @@ abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(
     viewModelCls: Class<VM>
 ) : Fragment(layoutResId) {
 
-    protected val binding by lazy { DataBindingUtil.bind<B>(view!!)!! }
+    protected lateinit var binding: B
+        private set
 
     protected val viewModel by viewModel(clazz = viewModelCls.kotlin)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+        binding = DataBindingUtil.bind(view!!)!!
+        return view
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

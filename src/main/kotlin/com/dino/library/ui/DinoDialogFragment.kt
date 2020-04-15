@@ -10,13 +10,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import com.dino.library.ext.showToast
+import com.googry.dinolibrary.BR
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-abstract class DinoDialogFragment<B : ViewDataBinding>(private val layoutId: Int) :
-    DialogFragment() {
+abstract class DinoDialogFragment<B : ViewDataBinding, VM : DinoViewModel>(
+    private val layoutId: Int,
+    viewModelCls: Class<VM>
+) : DialogFragment() {
 
     protected lateinit var binding: B
         private set
+
+    protected val viewModel by viewModel(clazz = viewModelCls.kotlin)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,9 +31,18 @@ abstract class DinoDialogFragment<B : ViewDataBinding>(private val layoutId: Int
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        binding.lifecycleOwner = this
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding {
+            lifecycleOwner = viewLifecycleOwner
+            setVariable(BR.vm, viewModel)
+        }
+        viewModel {
+            liveToast.observe(viewLifecycleOwner) { this@DinoDialogFragment.showToast(it) }
+        }
     }
 
     override fun show(manager: FragmentManager, tag: String?) {
@@ -34,6 +50,14 @@ abstract class DinoDialogFragment<B : ViewDataBinding>(private val layoutId: Int
             it.add(this, tag)
             it.commitAllowingStateLoss()
         }
+    }
+
+    protected fun binding(action: B.() -> Unit) {
+        binding.run(action)
+    }
+
+    protected fun viewModel(action: VM.() -> Unit) {
+        viewModel.run(action)
     }
 
 }

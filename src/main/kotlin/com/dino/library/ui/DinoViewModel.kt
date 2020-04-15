@@ -24,5 +24,4 @@ abstract class DinoViewModel : ViewModel() {
         liveToast.setEventValue(message)
     }
 
-
 }
