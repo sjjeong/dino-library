@@ -1,4 +1,4 @@
-package com.googry.dinolibrary;
+package com.dino.library;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.googry.dinolibrary.test", appContext.getPackageName());
+        assertEquals("com.dino.library.test", appContext.getPackageName());
     }
 }

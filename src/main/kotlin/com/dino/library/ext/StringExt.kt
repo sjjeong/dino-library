@@ -1,6 +1,6 @@
 package com.dino.library.ext
 
-import com.googry.dinolibrary.BuildConfig
+import com.dino.library.BuildConfig
 
 fun String.extractNumber(): String {
     return replace(Regex("[^\\d]"), "")

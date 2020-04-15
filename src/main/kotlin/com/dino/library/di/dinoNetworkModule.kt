@@ -1,6 +1,6 @@
 package com.dino.library.di
 
-import com.googry.dinolibrary.BuildConfig
+import com.dino.library.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

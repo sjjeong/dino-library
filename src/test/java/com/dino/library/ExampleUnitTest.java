@@ -1,4 +1,4 @@
-package com.googry.dinolibrary;
+package com.dino.library;
 
 import org.junit.Test;
 

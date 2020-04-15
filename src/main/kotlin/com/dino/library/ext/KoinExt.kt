@@ -1,7 +1,7 @@
 package com.dino.library.ext
 
 import android.content.Context
-import com.googry.dinolibrary.BuildConfig
+import com.dino.library.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin

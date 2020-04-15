@@ -1,7 +1,5 @@
 package com.dino.library.ui
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.dino.library.ext.showToast
-import com.googry.dinolibrary.BR
+import com.dino.library.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

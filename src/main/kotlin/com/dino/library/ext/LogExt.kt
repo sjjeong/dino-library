@@ -1,7 +1,7 @@
 package com.dino.library.ext
 
 import android.util.Log
-import com.googry.dinolibrary.BuildConfig
+import com.dino.library.BuildConfig
 
 const val LOG_TAG = "dino_log"
 

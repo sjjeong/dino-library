@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentManager
 import com.dino.library.ext.showToast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.googry.dinolibrary.BR
+import com.dino.library.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class DinoBottomSheetDialogFragment<B : ViewDataBinding, VM : DinoViewModel>(

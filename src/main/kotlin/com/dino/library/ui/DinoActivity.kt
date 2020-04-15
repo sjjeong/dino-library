@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.dino.library.ext.showToast
-import com.googry.dinolibrary.BR
+import com.dino.library.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

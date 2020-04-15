@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.dino.library.ext.showToast
-import com.googry.dinolibrary.BR
+import com.dino.library.BR
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(
