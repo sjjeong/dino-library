@@ -22,7 +22,7 @@ abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
         )!!
     }
 
-    protected val viewModel by viewModel(
+    protected open val viewModel by viewModel(
         clazz = ((javaClass.genericSuperclass as ParameterizedType?)
             ?.actualTypeArguments
             ?.get(1) as Class<VM>).kotlin
