@@ -7,23 +7,19 @@ import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter(value = ["loadUrl"])
 fun ImageView.loadUrl(url: String?) {
-    url?.let {
-        Glide.with(this)
-            .load(it)
-            .thumbnail(0.1f)
-            .into(this)
-    }
+    Glide.with(this)
+        .load(url)
+        .thumbnail(0.1f)
+        .into(this)
 }
 
 @BindingAdapter(value = ["loadUrlCircle"])
 fun ImageView.loadUrlCircle(url: String?) {
-    url?.let {
-        Glide.with(this)
-            .load(it)
-            .thumbnail(0.1f)
-            .apply(RequestOptions.circleCropTransform())
-            .into(this)
-    }
+    Glide.with(this)
+        .load(url)
+        .thumbnail(0.1f)
+        .apply(RequestOptions.circleCropTransform())
+        .into(this)
 }
 
 @BindingAdapter(value = ["drawableResId"])
