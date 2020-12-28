@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 
 @Suppress("UNCHECKED_CAST")
@@ -19,10 +19,14 @@ abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
     protected lateinit var binding: B
         private set
 
-    protected val viewModel by viewModel(
-        clazz = ((javaClass.genericSuperclass as ParameterizedType?)
-            ?.actualTypeArguments
-            ?.get(1) as Class<VM>).kotlin
+    private val viewModelClass = ((javaClass.genericSuperclass as ParameterizedType?)
+        ?.actualTypeArguments
+        ?.get(1) as Class<VM>).kotlin
+
+    protected val viewModel by ViewModelLazy(
+        viewModelClass,
+        { viewModelStore },
+        { defaultViewModelProviderFactory }
     )
 
     override fun onCreateView(

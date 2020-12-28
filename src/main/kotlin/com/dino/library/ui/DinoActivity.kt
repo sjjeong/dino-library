@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 
 
@@ -22,10 +22,14 @@ abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
         )!!
     }
 
-    protected open val viewModel by viewModel(
-        clazz = ((javaClass.genericSuperclass as ParameterizedType?)
-            ?.actualTypeArguments
-            ?.get(1) as Class<VM>).kotlin
+    private val viewModelClass = ((javaClass.genericSuperclass as ParameterizedType?)
+        ?.actualTypeArguments
+        ?.get(1) as Class<VM>).kotlin
+
+    protected val viewModel by ViewModelLazy(
+        viewModelClass,
+        { viewModelStore },
+        { defaultViewModelProviderFactory }
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
