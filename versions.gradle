@@ -42,6 +42,10 @@ ext {
             dino               : [
                     simplerecyclerview: "0.7.0",
             ],
+            hilt               : [
+                    core        : '2.28-alpha',
+                    viewmodel   : '1.0.0-alpha01',
+            ],
     ]
 
     deps = [
@@ -49,6 +53,7 @@ ext {
                     gradle              : "com.android.tools.build:gradle:$versions.gradle",
                     kotlin              : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin.sdk",
                     navigation_safe_args: "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidx.navigation",
+                    hilt                : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt.core"
             ],
             kotlin   : [
                     sdk               : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin.sdk",
@@ -67,6 +72,12 @@ ext {
                     lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_extensions",
                     lifecycle_livedata_ktx : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_extensions",
                     core_ktx               : "androidx.core:core-ktx:$versions.androidx.core_ktx",
+            ],
+            hilt     : [
+                    android                 : "com.google.dagger:hilt-android:$versions.hilt.core",
+                    android_compiler        : "com.google.dagger:hilt-android-compiler:$versions.hilt.core",
+                    lifecycle_viewmodel     : "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hilt.viewmodel",
+                    compiler                : "androidx.hilt:hilt-compiler:$versions.hilt.viewmodel",
             ],
             library  : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",

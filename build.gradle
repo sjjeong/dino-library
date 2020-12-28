@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath deps.classpath.kotlin
         classpath deps.classpath.gradle
+        classpath deps.classpath.hilt
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,6 +17,7 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion versions.compile_sdk_version
@@ -94,6 +96,11 @@ dependencies {
     testApi deps.test.junit
     androidTestApi deps.test.runner
     androidTestApi deps.test.espresso_core
+
+    api deps.hilt.android
+    kapt deps.hilt.android_compiler
+    api deps.hilt.lifecycle_viewmodel
+    kapt deps.hilt.compiler
 }
 repositories {
     mavenCentral()
