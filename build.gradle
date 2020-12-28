@@ -81,8 +81,6 @@ dependencies {
     api deps.library.retrofit2
     api deps.library.converter_gson
 
-    api deps.library.koin_androidx_viewmodel
-
     api deps.library.gson
     api deps.library.rxbinding_kotlin
     api deps.library.glide

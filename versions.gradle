@@ -33,7 +33,6 @@ ext {
             okhttp             : '4.3.1',
             retrofit2          : '2.7.1',
 
-            koin               : "2.1.0-alpha-8",
             gson               : "2.8.6",
             rxbinding_kotlin   : "2.1.1",
             glide              : "4.11.0",
@@ -79,8 +78,6 @@ ext {
 
                     retrofit2                 : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
                     converter_gson            : "com.squareup.retrofit2:converter-gson:$versions.retrofit2",
-
-                    koin_androidx_viewmodel   : "org.koin:koin-androidx-viewmodel:$versions.koin",
 
                     gson                      : "com.google.code.gson:gson:$versions.gson",
                     rxbinding_kotlin          : "com.jakewharton.rxbinding2:rxbinding-kotlin:$versions.rxbinding_kotlin",
