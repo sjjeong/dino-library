@@ -98,8 +98,6 @@ dependencies {
     androidTestApi deps.test.espresso_core
 
     api deps.hilt.android
-    kapt deps.hilt.android_compiler
-    api deps.hilt.lifecycle_viewmodel
     kapt deps.hilt.compiler
 }
 repositories {

@@ -44,7 +44,6 @@ ext {
             ],
             hilt               : [
                     core        : '2.32-alpha',
-                    viewmodel   : '1.0.0-alpha01',
             ],
     ]
 
@@ -75,9 +74,7 @@ ext {
             ],
             hilt     : [
                     android                 : "com.google.dagger:hilt-android:$versions.hilt.core",
-                    android_compiler        : "com.google.dagger:hilt-android-compiler:$versions.hilt.core",
-                    lifecycle_viewmodel     : "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hilt.viewmodel",
-                    compiler                : "androidx.hilt:hilt-compiler:$versions.hilt.viewmodel",
+                    compiler                : "com.google.dagger:hilt-compiler:$versions.hilt.core",
             ],
             library  : [
                     rxjava                    : "io.reactivex.rxjava2:rxjava:$versions.rx.rxjava",
