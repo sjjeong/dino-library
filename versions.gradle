@@ -41,7 +41,7 @@ ext {
             lottie             : "3.3.1",
 
             dino               : [
-                    simplerecyclerview: "0.7.0",
+                    simplerecyclerview: "0.7.2",
             ],
     ]
 
