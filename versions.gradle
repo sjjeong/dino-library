@@ -43,7 +43,7 @@ ext {
                     simplerecyclerview: "0.7.2",
             ],
             hilt               : [
-                    core        : '2.28-alpha',
+                    core        : '2.32-alpha',
                     viewmodel   : '1.0.0-alpha01',
             ],
     ]
