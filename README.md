@@ -29,7 +29,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
 }
 
@@ -40,13 +39,11 @@ task clean(type: Delete) {
 
 ### app module build.gradle
 ```
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
 
 android {
     compileSdkVersion versions.compile_sdk_version
@@ -58,30 +55,26 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
-    // Keep the following configuration in order to target Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
-    // For Kotlin projects
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '1.8'
     }
-
     buildFeatures {
         dataBinding true
     }
 }
 
 dependencies {
-    api project(":dino-library")
+    implementation project(":dino-library")
 }
 ```
