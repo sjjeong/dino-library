@@ -72,6 +72,7 @@ dependencies {
     api deps.androidx.lifecycle_viewmodel_ktx
     api deps.androidx.lifecycle_livedata_ktx
     api deps.androidx.core_ktx
+    api deps.androidx.activity_ktx
     api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     api deps.library.rxjava

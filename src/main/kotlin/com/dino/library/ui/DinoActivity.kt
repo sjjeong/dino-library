@@ -8,6 +8,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.reflect.ParameterizedType
 
 

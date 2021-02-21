@@ -22,6 +22,7 @@ ext {
                     constraint_layout   : '2.0.0-beta4',
                     lifecycle_extensions: '2.2.0',
                     core_ktx            : '1.2.0-rc01',
+                    activity_ktx        : '1.2.0',
             ],
 
             rx                 : [
@@ -71,6 +72,7 @@ ext {
                     lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx.lifecycle_extensions",
                     lifecycle_livedata_ktx : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx.lifecycle_extensions",
                     core_ktx               : "androidx.core:core-ktx:$versions.androidx.core_ktx",
+                    activity_ktx           : "androidx.activity:activity-ktx:$versions.androidx.activity_ktx",
             ],
             hilt     : [
                     android                 : "com.google.dagger:hilt-android:$versions.hilt.core",
