@@ -1,7 +1,7 @@
 ext {
     versions = [
             compile_sdk_version: 29,
-            min_sdk_version    : 23,
+            min_sdk_version    : 24,
             target_sdk_version : 29,
 
             gradle             : "4.1.2",
