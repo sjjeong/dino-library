@@ -40,7 +40,7 @@ ext {
             lottie             : "3.3.1",
 
             dino               : [
-                    simplerecyclerview: "0.7.0",
+                    simplerecyclerview: "0.7.2",
             ],
             hilt               : [
                     core        : '2.28-alpha',
