@@ -1,33 +1,28 @@
 package com.dino.library.ui
 
 import android.os.Bundle
-import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
-import dagger.hilt.android.AndroidEntryPoint
 import java.lang.reflect.ParameterizedType
 
 
 @Suppress("UNCHECKED_CAST")
-abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(layoutResId: Int) :
-    AppCompatActivity(layoutResId) {
+abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(
+    @LayoutRes private val layoutResId: Int,
+) : AppCompatActivity() {
 
-    protected val binding by lazy {
-        DataBindingUtil.bind<B>(
-            (window.decorView
-                .findViewById(android.R.id.content) as ViewGroup).getChildAt(0)
-        )!!
-    }
+    protected lateinit var binding: B
 
     private val viewModelClass = ((javaClass.genericSuperclass as ParameterizedType?)
         ?.actualTypeArguments
         ?.get(1) as Class<VM>).kotlin
 
-    protected val viewModel by ViewModelLazy(
+    protected open val viewModel by ViewModelLazy(
         viewModelClass,
         { viewModelStore },
         { defaultViewModelProviderFactory }
@@ -35,6 +30,7 @@ abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, layoutResId)
         binding {
             lifecycleOwner = this@DinoActivity
             setVariable(BR.vm, viewModel)
