@@ -1,8 +1,18 @@
 package com.dino.library.ext
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+
+inline fun <reified T> AppCompatActivity.startActivity(
+    vararg pairs: Pair<String, Any?>,
+) {
+    startActivity(Intent(this, T::class.java).apply {
+        putExtras(bundleOf(*pairs))
+    })
+}
 
 fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, frameId: Int) {
     supportFragmentManager.transact {
