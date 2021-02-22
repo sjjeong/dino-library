@@ -5,9 +5,11 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
+import com.dino.library.util.Event
 import java.lang.reflect.ParameterizedType
 
 
@@ -46,6 +48,16 @@ abstract class DinoActivity<B : ViewDataBinding, VM : DinoViewModel>(
 
     protected fun viewModel(action: VM.() -> Unit) {
         viewModel.run(action)
+    }
+
+    protected infix fun <T> LiveData<T>.observe(action: (T) -> Unit) {
+        observe(this@DinoActivity, action)
+    }
+
+    protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
+        observe(this@DinoActivity, {
+            it.get(action)
+        })
     }
 
 }
