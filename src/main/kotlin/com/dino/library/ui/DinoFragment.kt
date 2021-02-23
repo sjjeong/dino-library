@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelLazy
 import com.dino.library.BR
 import com.dino.library.ext.showToast
+import com.dino.library.util.Event
 import java.lang.reflect.ParameterizedType
 
 @Suppress("UNCHECKED_CAST")
 abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(layoutResId: Int) :
     Fragment(layoutResId) {
 
-    protected lateinit var binding: B
-        private set
+    private var _binding: B? = null
+    protected val binding: B
+        get() = _binding!!
 
     private val viewModelClass = ((javaClass.genericSuperclass as ParameterizedType?)
         ?.actualTypeArguments
@@ -32,15 +35,20 @@ abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        binding = DataBindingUtil.bind(view!!)!!
+        _binding = DataBindingUtil.bind(view!!)!!
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding {
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.vm, viewModel)
@@ -56,6 +64,16 @@ abstract class DinoFragment<B : ViewDataBinding, VM : DinoViewModel>(layoutResId
 
     protected fun viewModel(action: VM.() -> Unit) {
         viewModel.run(action)
+    }
+
+    protected infix fun <T> LiveData<T>.observe(action: (T) -> Unit) {
+        observe(viewLifecycleOwner, action)
+    }
+
+    protected infix fun <T> LiveData<Event<T>>.eventObserve(action: (T) -> Unit) {
+        observe(viewLifecycleOwner, {
+            it.get(action)
+        })
     }
 
 }
